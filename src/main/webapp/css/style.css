@@ -1,0 +1,264 @@
+body {
+    width: 100%;
+    min-width: 780px;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    line-height: 24px;
+    color: #000000;
+}
+
+.container-main {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+.main-header {
+    width: 100%;
+    padding-top: 35px;
+    padding-bottom: 30px;
+    font-family: Arial, sans-serif;
+    color: black;
+    font-size: 18px;
+}
+
+.main-header::after {
+    display: table;
+    clear: both;
+    content: "";
+}
+
+.logo {
+    float: left;
+}
+
+.university-title {
+    color: #1a46b3;
+    float: right;
+}
+
+.lab-title {
+    padding-top: 170px;
+    text-align: center;
+}
+
+.lab-title ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.lab-title li {
+    color: #1a46b3;
+    font-size: 22px;
+    line-height: 32px;
+    font-weight: 600;
+}
+
+.container-program {
+    width: 100%;
+    max-width: 900px;
+    border: 2px solid #2f9aff;
+    border-radius: 15px;
+    padding: 10px;
+}
+
+.program-parts {
+    color: #536e7b;
+}
+
+.program-img {
+    float: left;
+    padding-left: 5%;
+}
+
+.area {
+    margin-top: 15px;
+    width: 300px;
+    height: 300px;
+    border: 2px solid #c4c4c4;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.area:hover {
+    border: 2px solid #212e35;
+}
+
+.intervals,
+.buttons,
+.ui-spinner {
+    /*float: right;*/
+    /*padding-right: 5%;*/
+    width: 350px;
+    font-size: 18px;
+    line-height: 10px;
+}
+
+.buttons,
+.cancel {
+    padding-top: 20px;
+}
+
+.check {
+    float: right;
+    margin-right: 10px;
+}
+
+.clear {
+    float: right;
+}
+
+.x-interval input[type="text"],
+.y-interval input[type="text"],
+.r-interval select {
+    /*-webkit-box-sizing: border-box;*/
+    /*-moz-box-sizing: border-box;*/
+    /*box-sizing: border-box;*/
+    width: 100%;
+    padding: 5px 5px;
+    font-weight: 400;
+    font-size: 18px;
+    font-family: Arial, sans-serif;
+    outline: none;
+    border: 2px solid #c4c4c4;
+    border-radius: 6px;
+    color: #536e7b;
+}
+
+.x-interval input[type="text"],
+.r-interval select {
+    padding: 5px 5px;
+}
+
+.x-interval input[type="text"]:hover,
+.y-interval input[type="text"]:hover,
+.r-interval select:hover {
+    border: 2px solid #212e35;
+}
+
+.x-interval input[type="text"]:focus,
+.y-interval input[type="text"]:focus,
+.r-interval select:focus {
+    border: 2px solid #3647ac;
+    color: #3647ac;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px;
+    font-size: 16px;
+    line-height: 24px;
+    vertical-align: top;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #ffffff;
+    cursor: pointer;
+    outline: none;
+    border: 0px solid #ffffff;
+    border-radius: 6px;
+    width: 170px;
+}
+
+.btn {
+    background: #2f9aff;
+}
+
+.btn:hover {
+    background: #1a46b3;
+}
+
+.btn:active {
+    background: #1a46b3;
+    color: #2fb9ff;
+}
+
+.btn-toMain {
+    margin-top: 10px;
+}
+
+.back {
+    padding-top: 15px;
+}
+
+.program-parts::after {
+    display: table;
+    clear: both;
+    content: "";
+}
+
+.container-result {
+    width: 100%;
+    text-align: center;
+    max-width: 850px;
+    color: #536e7b;
+}
+
+.container-current-result {
+    display: none;
+    margin-top: 5%;
+    border: 2px solid #2f9aff;
+    border-radius: 15px;
+    padding: 10px;
+}
+
+.last-results {
+    display: none;
+}
+
+.result-title,
+.last-results-title {
+    font-size: 24px;
+    line-height: 24px;
+    padding-bottom: 10px;
+}
+
+.last-results-title {
+    padding-top: 35px;
+}
+
+#result-table,
+#last-results-table {
+    border-collapse: collapse;
+    margin: auto;
+}
+
+.result-key,
+.result-value,
+.last-results-key {
+    margin-right: 18px;
+    font-size: 18px;
+    line-height: 24px;
+}
+
+td,
+th {
+    padding: 3px;
+    border: 0.8px solid #2f9aff;
+}
+
+td div,
+th div {
+    min-height: 24px;
+    width: 100%;
+    text-align: center;
+    vertical-align: center;
+    font-size: 18px;
+    line-height: 24px;
+    color: #536e7b;
+}
+
+.main-footer {
+    padding-bottom: 35px;
+}
+
+.unselectable {
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
