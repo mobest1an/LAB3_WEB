@@ -67,12 +67,8 @@ body {
 }
 
 .program-parts {
+    text-align: center;
     color: #536e7b;
-}
-
-.program-img {
-    float: left;
-    padding-left: 5%;
 }
 
 .area {
@@ -91,8 +87,6 @@ body {
 .intervals,
 .buttons,
 .ui-spinner {
-    /*float: right;*/
-    /*padding-right: 5%;*/
     width: 350px;
     font-size: 18px;
     line-height: 10px;
@@ -104,12 +98,17 @@ body {
 }
 
 .check {
-    float: right;
+    /*float: right;*/
     margin-right: 10px;
 }
 
 .clear {
-    float: right;
+    /*float: right;*/
+}
+
+.centering {
+    text-align: center;
+    margin: auto;
 }
 
 .x-interval input[type="text"],
@@ -119,7 +118,7 @@ body {
     /*-moz-box-sizing: border-box;*/
     /*box-sizing: border-box;*/
     width: 100%;
-    padding: 5px 5px;
+    /*padding: 5px 5px;*/
     font-weight: 400;
     font-size: 18px;
     font-family: Arial, sans-serif;
