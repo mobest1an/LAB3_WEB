@@ -157,11 +157,51 @@
                         </div>
                     </div>
                     <h:commandButton styleClass="btn btn-check" action="#{programBean.doAction}" value="Проверить точку">
-                        <f:ajax execute="main-form" render="main-form"/>
+                        <f:ajax execute="@form" render="@all"/>
                     </h:commandButton>
                     <br/>
                     <h:outputText id="message" value="#{programBean.message}" style="color: red"/>
                 </h:form>
+
+                <div class="container-main container-result">
+                    <div class="last-results">
+                        <div class="last-results-title">Результаты:</div>
+                        <h:dataTable style="border-collapse: collapse; margin: auto" value="#{programBean.results}" var="result">
+                            <h:column>
+                                <f:facet name="header">
+                                    <div class="last-results-key">Координата X:</div>
+                                </f:facet>
+                                <div class="parameter">
+                                    <h:outputText value="#{result.x}"/>
+                                </div>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <div class="last-results-key">Координата Y:</div>
+                                </f:facet>
+                                <div class="parameter">
+                                    <h:outputText value="#{result.y}"/>
+                                </div>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <div class="last-results-key">Параметр R:</div>
+                                </f:facet>
+                                <div class="parameter">
+                                    <h:outputText value="#{result.r}"/>
+                                </div>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <div class="last-results-key">Попала:</div>
+                                </f:facet>
+                                <div class="parameter">
+                                    <h:outputText value="#{result.hit}"/>
+                                </div>
+                            </h:column>
+                        </h:dataTable>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

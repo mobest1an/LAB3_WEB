@@ -9,6 +9,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.DecimalMin;
+import java.util.Date;
+import java.util.List;
 
 @ManagedBean(name = "programBean", eager = true)
 @ApplicationScoped
@@ -34,12 +36,14 @@ public class ProgramBean {
     @DecimalMax(value = "5", message = "Число не соответствует диапазону! [1..5]")
     private double r;
 
+    @ManagedProperty(value = "#{resultServiceBean.results}")
+    private List<Result> results;
+
     private String message;
 
     public double getX() {
         return x;
     }
-
     public void setX(double x) {
         this.x = x;
     }
@@ -47,7 +51,6 @@ public class ProgramBean {
     public double getY() {
         return y;
     }
-
     public void setY(double y) {
         this.y = y;
     }
@@ -55,7 +58,6 @@ public class ProgramBean {
     public double getR() {
         return r;
     }
-
     public void setR(double r) {
         this.r = r;
     }
@@ -63,7 +65,6 @@ public class ProgramBean {
     public Checking getChecking() {
         return checking;
     }
-
     public void setChecking(Checking checking) {
         this.checking = checking;
     }
@@ -71,9 +72,16 @@ public class ProgramBean {
     public ResultService getResultService() {
         return resultService;
     }
-
     public void setResultService(ResultService resultService) {
         this.resultService = resultService;
+    }
+
+    public List<Result> getResults() {
+        return results;
+    }
+
+    public void setResults(List<Result> results) {
+        this.results = results;
     }
 
     public String getMessage() {
@@ -85,8 +93,12 @@ public class ProgramBean {
     }
 
     public void doAction() {
-        result = new Result(x, y, r);
-        result.setHit(checking.check(result));
+        result = new Result(x, y, r, new Date());
+        if (checking.check(result)) {
+            result.setHit("Да");
+        } else {
+            result.setHit("Нет");
+        }
         if (resultService.addResult(result)) {
             message = "";
         } else {

@@ -1,16 +1,20 @@
 package com.mobest1an.labs.services;
 
+import java.util.Date;
+
 public class Result {
 
     private double x;
     private double y;
     private double r;
-    private boolean hit;
+    private Date creationDate;
+    private String hit;
 
-    public Result(double x, double y, double r) {
+    public Result(double x, double y, double r, Date creationDate) {
         this.x = x;
         this.y = y;
         this.r = r;
+        this.creationDate = creationDate;
     }
 
     public double getX() {
@@ -37,11 +41,19 @@ public class Result {
         this.r = r;
     }
 
-    public boolean getHit() {
+    public String getHit() {
         return hit;
     }
 
-    public void setHit(boolean hit) {
+    public void setHit(String hit) {
         this.hit = hit;
+    }
+
+    public Date getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
     }
 }

@@ -6979,8 +6979,8 @@
     <schema id="2325" parent="1" name="S312989">
       <ObjectId>4354</ObjectId>
       <CreatedTimestamp>2021-11-09.20:34:32</CreatedTimestamp>
-      <ModifiedTimestamp>2021-11-10.18:23:34</ModifiedTimestamp>
-      <IntrospectionTimestamp>2021-11-10.18:23:35</IntrospectionTimestamp>
+      <ModifiedTimestamp>2021-11-10.20:38:23</ModifiedTimestamp>
+      <IntrospectionTimestamp>2021-11-10.20:38:25</IntrospectionTimestamp>
       <Current>1</Current>
     </schema>
     <schema id="2326" parent="1" name="S312990">
@@ -45191,7 +45191,7 @@
     <table id="8313" parent="2325" name="RESULTS">
       <ObjectId>743498</ObjectId>
       <CreatedTimestamp>2021-11-09.20:34:32</CreatedTimestamp>
-      <ModifiedTimestamp>2021-11-10.18:23:34</ModifiedTimestamp>
+      <ModifiedTimestamp>2021-11-10.20:38:23</ModifiedTimestamp>
       <TemporaryPreserve>1</TemporaryPreserve>
     </table>
     <column id="8314" parent="8313" name="X">
@@ -45212,6 +45212,11 @@
     <column id="8317" parent="8313" name="HIT">
       <Position>4</Position>
       <DataType>CHAR(1 byte)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="8318" parent="8313" name="TIME">
+      <Position>5</Position>
+      <DataType>LONG|0s</DataType>
       <NotNull>1</NotNull>
     </column>
   </database-model>

@@ -28,7 +28,13 @@ public class ResultServiceBean implements ResultService {
     }
 
     public List<Result> getResults() {
-        return null;
+        if (dataBaseManagerBean.isConnected()) {
+            List<Result> dbList = dataBaseManagerBean.getResults();
+            if (dbList != null) {
+                results.addAll(dbList);
+            }
+        }
+        return results;
     }
 
     public DataBaseManagerBean getDataBaseManagerBean() {
