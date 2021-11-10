@@ -6,4 +6,5 @@ public interface ResultService {
 
     boolean addResult(Result result);
     List<Result> getResults();
+    boolean clearResults();
 }

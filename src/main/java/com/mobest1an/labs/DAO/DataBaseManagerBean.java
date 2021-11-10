@@ -75,6 +75,18 @@ public class DataBaseManagerBean {
         }
     }
 
+    public boolean clearDataBase() {
+        try {
+            String query = "TRUNCATE TABLE RESULTS";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
     public boolean isConnected() {
         try {
             if (connection != null && connection.isValid(0)) {

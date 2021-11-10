@@ -32,7 +32,7 @@
     <div class="program">
         <div class="container-main container-program">
             <div class="program-parts">
-                <svg class="area" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg"
+                <svg id="svgArea" class="area" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg"
                      xmlns:bx="https://boxy-svg.com">
                     <defs>
                         <path id="path-0"
@@ -131,42 +131,57 @@
                 <h:form id="main-form">
                     <div class="x-interval intervals centering">
                         <p id="x-title">Введите координату X:</p>
-                        <h:inputText id="x-change" value="#{programBean.x}"/>
+                        <div id="x-parent">
+                            <h:inputText id="x-change" styleClass="x-change" value="#{programBean.x}"/>
+                        </div>
                         <div style="margin-top: 5px">
                             <h:message for="x-change" style="color: red"/>
+                            <span id="x-error" style="color: red"/>
                         </div>
                     </div>
                     <div class="y-interval intervals centering">
                         <p id="y-title">Выберите координату Y:</p>
-                        <p:spinner id="y-change" value="#{programBean.y}" min="-2.9" max="2.9" stepFactor="1"/>
+                        <div id="y-parent">
+                            <p:spinner id="y-change" styleClass="y-change" value="#{programBean.y}" min="-2.99999" max="2.99999" stepFactor="1"/>
+                        </div>
                         <div style="margin-top: 5px">
                             <h:message for="y-change" style="color: red"/>
+                            <span id="y-error" style="color: red"/>
                         </div>
                     </div>
                     <div class="r-interval intervals centering">
                         <p id="r-title">Выберите параметр R:</p>
-                        <h:selectOneMenu id="r-change" value="#{programBean.r}">
-                            <f:selectItem itemValue="1" itemLabel="1"/>
-                            <f:selectItem itemValue="2" itemLabel="2"/>
-                            <f:selectItem itemValue="3" itemLabel="3"/>
-                            <f:selectItem itemValue="4" itemLabel="4"/>
-                            <f:selectItem itemValue="5" itemLabel="5"/>
-                        </h:selectOneMenu>
+                        <div id="r-parent">
+                            <h:selectOneMenu id="r-change" styleClass="r-change" value="#{programBean.r}">
+                                <f:selectItem itemValue="1" itemLabel="1"/>
+                                <f:selectItem itemValue="2" itemLabel="2"/>
+                                <f:selectItem itemValue="3" itemLabel="3"/>
+                                <f:selectItem itemValue="4" itemLabel="4"/>
+                                <f:selectItem itemValue="5" itemLabel="5"/>
+                            </h:selectOneMenu>
+                        </div>
                         <div style="margin-top: 5px">
                             <h:message for="r-change" style="color: red"/>
+                            <span id="r-error" style="color: red"/>
                         </div>
                     </div>
-                    <h:commandButton styleClass="btn btn-check" action="#{programBean.doAction}" value="Проверить точку">
-                        <f:ajax execute="@form" render="@all"/>
-                    </h:commandButton>
+                    <div id="btn-check-parent">
+                        <h:commandButton styleClass="btn btn-check" onclick="return validate()" action="#{programBean.doAction}" value="Проверить точку">
+                            <f:ajax execute="@form" render="@all" onevent="afterAjaxSuccess"/>
+                        </h:commandButton>
+                        <h:commandButton styleClass="btn btn-clear" action="#{programBean.doClear}" value="Очистить">
+                            <f:ajax execute="@form" render="@all" onevent="afterAjaxSuccess"/>
+                        </h:commandButton>
+                    </div>
+                    <h:commandButton styleClass="btn btn-back" action="index" value="Назад"/>
                     <br/>
-                    <h:outputText id="message" value="#{programBean.message}" style="color: red"/>
+                    <h:outputText value="#{programBean.message}" style="color: red"/>
                 </h:form>
 
                 <div class="container-main container-result">
                     <div class="last-results">
-                        <div class="last-results-title">Прошлые результаты:</div>
-                        <h:dataTable style="border-collapse: collapse; margin: auto" value="#{programBean.results}" var="result">
+                        <div class="last-results-title">Результаты:</div>
+                        <h:dataTable id="results-table" style="border-collapse: collapse; margin: auto" value="#{programBean.results}" var="result">
                             <h:column>
                                 <f:facet name="header">
                                     <div class="last-results-key">Координата X:</div>

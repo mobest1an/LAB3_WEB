@@ -37,6 +37,14 @@ public class ResultServiceBean implements ResultService {
         return results;
     }
 
+    public boolean clearResults() {
+        if (dataBaseManagerBean.clearDataBase()) {
+            results.clear();
+            return true;
+        }
+        return false;
+    }
+
     public DataBaseManagerBean getDataBaseManagerBean() {
         return dataBaseManagerBean;
     }

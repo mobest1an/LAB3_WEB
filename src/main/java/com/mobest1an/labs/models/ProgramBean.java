@@ -105,4 +105,12 @@ public class ProgramBean {
             message = "Не удалось добавить элемент!";
         }
     }
+
+    public void doClear() {
+        if (resultService.clearResults()) {
+            message = "Таблица очищена!";
+        } else {
+            message = "Не удалось очистить таблицу!";
+        }
+    }
 }

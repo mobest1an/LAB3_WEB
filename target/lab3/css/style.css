@@ -177,8 +177,18 @@ body {
 }
 
 .btn-toMain,
-.btn-check {
+.btn-check,
+.btn-clear,
+.btn-back {
     margin-top: 10px;
+}
+
+.btn-check {
+    margin-right: 4px;
+}
+
+.btn-clear {
+    margin-left: 4px;
 }
 
 .back {

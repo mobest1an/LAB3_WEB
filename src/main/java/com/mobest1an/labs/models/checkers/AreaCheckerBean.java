@@ -16,7 +16,7 @@ public class AreaCheckerBean implements Checking {
         double y = result.getY();
         double r = result.getR();
 
-        if (x <= 0 && y >= 0 && x <= r && y <= r) {
+        if (x <= 0 && y >= 0 && x >= -r && y <= r) {
             return true;
         }
 
