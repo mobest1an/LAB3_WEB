@@ -176,7 +176,8 @@ body {
     color: #2fb9ff;
 }
 
-.btn-toMain {
+.btn-toMain,
+.btn-check {
     margin-top: 10px;
 }
 

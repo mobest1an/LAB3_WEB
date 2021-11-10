@@ -128,28 +128,39 @@
                         <tspan x="187.945" dy="1em">​</tspan>
                     </text>
                 </svg>
-                <h:form>
+                <h:form id="main-form">
                     <div class="x-interval intervals centering">
                         <p id="x-title">Введите координату X:</p>
                         <h:inputText id="x-change" value="#{programBean.x}"/>
+                        <div style="margin-top: 5px">
+                            <h:message for="x-change" style="color: red"/>
+                        </div>
                     </div>
                     <div class="y-interval intervals centering">
                         <p id="y-title">Выберите координату Y:</p>
-                        <p:spinner id="y-change" value="#{programBean.y}" min="-2.9" max="2.9" stepFactor="1" styleClass="y-interval intervals"/>
+                        <p:spinner id="y-change" value="#{programBean.y}" min="-2.9" max="2.9" stepFactor="1"/>
+                        <div style="margin-top: 5px">
+                            <h:message for="y-change" style="color: red"/>
+                        </div>
                     </div>
                     <div class="r-interval intervals centering">
                         <p id="r-title">Выберите параметр R:</p>
-                        <h:selectOneMenu value="#{programBean.r}">
+                        <h:selectOneMenu id="r-change" value="#{programBean.r}">
                             <f:selectItem itemValue="1" itemLabel="1"/>
                             <f:selectItem itemValue="2" itemLabel="2"/>
                             <f:selectItem itemValue="3" itemLabel="3"/>
                             <f:selectItem itemValue="4" itemLabel="4"/>
                             <f:selectItem itemValue="5" itemLabel="5"/>
                         </h:selectOneMenu>
+                        <div style="margin-top: 5px">
+                            <h:message for="r-change" style="color: red"/>
+                        </div>
                     </div>
                     <h:commandButton styleClass="btn btn-check" action="#{programBean.doAction}" value="Проверить точку">
-                        <f:ajax execute="@form" render="@all"/>
+                        <f:ajax execute="main-form" render="main-form"/>
                     </h:commandButton>
+                    <br/>
+                    <h:outputText id="message" value="#{programBean.message}" style="color: red"/>
                 </h:form>
             </div>
         </div>

@@ -9,11 +9,13 @@
         <navigation-case>
             <from-outcome>start</from-outcome>
             <to-view-id>/views/index.xhtml</to-view-id>
+            <redirect/>
         </navigation-case>
 
         <navigation-case>
             <from-outcome>main</from-outcome>
             <to-view-id>/views/main.xhtml</to-view-id>
+            <redirect/>
         </navigation-case>
     </navigation-rule>
 </faces-config>
