@@ -195,10 +195,16 @@ drawArea();
 
 function validate() {
     clearErrorMessages();
+    setX(getX().replace(",", "."));
+    setY(getY().replace(",", "."));
     return validateX(getX()) && validateY(getY()) && validateR(getR());
 }
 
 function validateX(x) {
+    if (x.length > 17) {
+        setXError("Слишком длинное число!");
+        return false;
+    }
     if (isNaN(x)) {
         setXError("Введите число!");
         return false;
@@ -207,14 +213,14 @@ function validateX(x) {
         setXError("Число не соответствует диапазону! (-5..3)");
         return false;
     }
-    if (x.length > 17) {
-        setXError("Слишком длинное число!");
-        return false;
-    }
     return true;
 }
 
 function validateY(y) {
+    if (y.length > 17) {
+        setYError("Слишком длинное число!");
+        return false;
+    }
     if (isNaN(y)) {
         setYError("Введите число!");
         return false;
@@ -223,24 +229,20 @@ function validateY(y) {
         setYError("Число не соответствует диапазону! (-3..3)");
         return false;
     }
-    if (y.length > 17) {
-        setYError("Слишком длинное число!");
-        return false;
-    }
     return true;
 }
 
 function validateR(r) {
+    if (r.length > 17) {
+        setRError("Слишком длинное число!");
+        return false;
+    }
     if (isNaN(r)) {
         setRError("Введите число!");
         return false;
     }
     if (r < 1 || r > 5) {
         setRError("Число не соответствует диапазону! [1..5]");
-        return false;
-    }
-    if (r.length > 17) {
-        setRError("Слишком длинное число!");
         return false;
     }
     return true;
