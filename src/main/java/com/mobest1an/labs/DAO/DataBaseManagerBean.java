@@ -4,21 +4,36 @@ import com.mobest1an.labs.services.Result;
 
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Properties;
 
 @ManagedBean(name = "dataBaseManagerBean", eager = true)
 @ApplicationScoped
 public class DataBaseManagerBean {
 
     private Connection connection;
-    private final String DB_URL = "jdbc:oracle:thin:@localhost:1521:orbis";
-    private final String USER = "s312989";
-    private final String PASS = "wnc702";
+    private InputStream inputStream;
+    private Properties properties;
+    private String DB_URL;
+    private String USER;
+    private String PASS;
 
     public DataBaseManagerBean() {
+        try {
+            inputStream = getClass().getResourceAsStream("/DBConfig/DBconfig.properties");
+            properties = new Properties();
+            properties.load(inputStream);
+            DB_URL = properties.getProperty("DB_URL");
+            USER = properties.getProperty("USER");
+            PASS = properties.getProperty("PASS");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         try {
             Class.forName("oracle.jdbc.OracleDriver");
             connection = DriverManager.getConnection(DB_URL, USER, PASS);
