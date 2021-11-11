@@ -41,6 +41,7 @@ public class DataBaseManagerBean {
             }
             preparedStatement.setLong(5, result.getCreationDate().getTime());
             preparedStatement.executeUpdate();
+            preparedStatement.close();
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -68,6 +69,7 @@ public class DataBaseManagerBean {
                 }
                 results.add(result);
             }
+            preparedStatement.close();
             return results;
         } catch (SQLException e) {
             e.printStackTrace();

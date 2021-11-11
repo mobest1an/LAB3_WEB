@@ -84,7 +84,11 @@ drawArea = function () {
         circle.setAttribute('cx', String(x / r * 100 + 150));
         circle.setAttribute('cy', String(150 - (y) / r * 100));
         circle.setAttribute("r", "3");
-        if (hit === "Да") {
+        if (x <= 0 && y >= 0 && x >= -r && y <= r) {
+            circle.setAttribute("fill", "green");
+        } else if (x <= 0 && y <= 0 && (Math.pow(x, 2) + Math.pow(y, 2)) <= Math.pow(r / 2, 2)) {
+            circle.setAttribute("fill", "green");
+        } else if (x >= 0 && y <= 0 && y - x >= (-r / 2)) {
             circle.setAttribute("fill", "green");
         } else {
             circle.setAttribute("fill", "red");
