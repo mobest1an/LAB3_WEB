@@ -152,7 +152,7 @@
                     <div class="r-interval intervals centering">
                         <p id="r-title">Выберите параметр R:</p>
                         <div id="r-parent">
-                            <h:selectOneMenu id="r-change" styleClass="r-change" value="#{programBean.r}">
+                            <h:selectOneMenu id="r-change" styleClass="r-change" onchange="drawArea()" value="#{programBean.r}">
                                 <f:selectItem itemValue="1" itemLabel="1"/>
                                 <f:selectItem itemValue="2" itemLabel="2"/>
                                 <f:selectItem itemValue="3" itemLabel="3"/>
