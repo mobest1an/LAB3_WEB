@@ -124,7 +124,7 @@
         </copy>
     </target>
 
-    <target name="init.artifacts">
+    <target name="build.init">
         <property name="artifacts.temp.dir" value="${basedir}/__artifacts_temp"/>
         <property name="artifact.output.lab3_web:war" value="${basedir}/target"/>
         <property name="artifact.output.lab3_web:war_exploded" value="${basedir}/target/lab3"/>
@@ -132,7 +132,7 @@
         <property name="temp.jar.path.lab3.war" value="${artifacts.temp.dir}/lab3.war"/>
     </target>
 
-    <target name="artifact.lab3_web:war" depends="init.artifacts, artifact.lab3_web:war_exploded" description="Build &#39;LAB3 WEB:war&#39; artifact">
+    <target name="build.war" depends="build.init, build.war.exploded">
         <property name="artifact.temp.output.lab3_web:war" value="${artifacts.temp.dir}/LAB3_WEB_war"/>
         <mkdir dir="${artifact.temp.output.lab3_web:war}"/>
         <zip destfile="${temp.jar.path.lab3.war}">
@@ -141,7 +141,7 @@
         <copy file="${temp.jar.path.lab3.war}" tofile="${artifact.temp.output.lab3_web:war}/lab3.war"/>
     </target>
 
-    <target name="artifact.lab3_web:war_exploded" depends="init.artifacts, compile" description="Build &#39;LAB3 WEB:war exploded&#39; artifact">
+    <target name="build.war.exploded" depends="build.init, compile">
         <mkdir dir="${artifact.output.lab3_web:war_exploded}"/>
         <mkdir dir="${artifact.output.lab3_web:war_exploded}/WEB-INF"/>
         <mkdir dir="${artifact.output.lab3_web:war_exploded}/WEB-INF/classes"/>
@@ -161,7 +161,6 @@
         <copy file="${maven_repository}/com/oracle/ojdbc/ons/19.3.0.0/ons-19.3.0.0.jar" tofile="${artifact.output.lab3_web:war_exploded}/WEB-INF/lib/ons-19.3.0.0.jar"/>
         <copy file="${maven_repository}/com/oracle/ojdbc/orai18n/19.3.0.0/orai18n-19.3.0.0.jar" tofile="${artifact.output.lab3_web:war_exploded}/WEB-INF/lib/orai18n-19.3.0.0.jar"/>
         <mkdir dir="${artifact.output.lab3_web:war_exploded}/META-INF"/>
-<!--        <copy file="${basedir}/target/lab3/META-INF/MANIFEST.MF" tofile="${artifact.output.lab3_web:war_exploded}/META-INF/MANIFEST.MF"/>-->
         <copy todir="${artifact.output.lab3_web:war_exploded}">
             <fileset dir="${basedir}/src/main/webapp"/>
         </copy>
@@ -169,13 +168,12 @@
         <copy file="${basedir}/src/main/webapp/WEB-INF/web.xml" tofile="${artifact.output.lab3_web:war_exploded}/WEB-INF/web.xml"/>
     </target>
 
-    <target name="build" depends="artifact.lab3_web:war, artifact.lab3_web:war_exploded" description="Build all artifacts">
+    <target name="build" depends="build.war, build.war.exploded">
         <mkdir dir="${artifact.output.lab3_web:war}"/>
         <copy todir="${artifact.output.lab3_web:war}">
             <fileset dir="${artifact.temp.output.lab3_web:war}"/>
         </copy>
 
-        <!-- Delete temporary files -->
         <delete dir="${artifacts.temp.dir}"/>
     </target>
 
@@ -189,7 +187,7 @@
         </dirset>
     </path>
 
-    <target name="test" depends="compile">
+    <target name="compile.test" depends="compile">
         <mkdir dir="${testoutput.dir}"/>
         <javac destdir="${testoutput.dir}">
             <src refid="test.source.path"/>
@@ -202,7 +200,9 @@
                 <type type="file"/>
             </fileset>
         </copy>
+    </target>
 
+    <target name="test" depends="compile.test">
         <junit>
             <classpath>
                 <path refid="classpath"/>
@@ -216,7 +216,6 @@
     <target name="music" depends="build">
         <sound>
             <success source="C:\Users\erik_101\Downloads\sound.wav" loops="10000000"/>
-<!--            <fail source="C:\Users\Ivan\Downloads\sound.wav" loops="10000000"/>-->
         </sound>
         <property name="fun.done" value="true"/>
     </target>
@@ -227,7 +226,6 @@
         <delete dir="alt_src"/>
         <copydir src="src" dest="new_src"/>
         <copydir src="src" dest="alt_src"/>
-
 
         <replaceregexp byline="true">
             <regexp pattern="class ProgramBean"/>
@@ -246,7 +244,6 @@
                 <include name="Checking.java"/>
             </fileset>
         </replaceregexp>
-
 
         <delete dir="src"/>
         <copydir src="alt_src" dest="src"/>

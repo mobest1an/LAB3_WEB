@@ -17,5 +17,10 @@
       </option>
       <option name="myCustomValuesEnabled" value="true" />
     </inspection_tool>
+    <inspection_tool class="MisspelledHeader" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="CUSTOM_HEADERS">
+        <header value="Ant-Version" />
+      </option>
+    </inspection_tool>
   </profile>
 </component>
