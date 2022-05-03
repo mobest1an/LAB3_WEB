@@ -71,7 +71,6 @@
     </path>
 
     <path id="classpath">
-        <pathelement location="${testoutput.dir}"/>
         <pathelement location="${output.dir}"/>
         <path refid="library.maven:_com.sun.faces:jsf-api:2.2.18.classpath"/>
         <path refid="library.maven:_com.sun.faces:jsf-impl:2.2.18.classpath"/>
@@ -179,14 +178,17 @@
         <delete dir="${basedir}/target/"/>
     </target>
 
+    <path id="test.source.path">
+        <dirset dir="${basedir}">
+            <include name="src/test/java"/>
+        </dirset>
+    </path>
+
     <target name="test" depends="compile">
         <mkdir dir="${testoutput.dir}"/>
         <javac destdir="${testoutput.dir}">
-            <compilerarg line="${compiler.args.lab3_web}"/>
-            <bootclasspath refid="lab3_web.module.bootclasspath"/>
-            <classpath refid="lab3_web.module.classpath"/>
-            <src refid="lab3_web.module.test.sourcepath"/>
-            <patternset refid="excluded.from.compilation.lab3_web"/>
+            <src refid="test.source.path"/>
+            <classpath refid="classpath"/>
         </javac>
 
         <copy todir="${lab3_web.testoutput.dir}">
