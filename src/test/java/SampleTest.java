@@ -9,7 +9,7 @@ public class SampleTest {
     @Test
     public void testSample() {
         AreaCheckerBean areaCheckerBean = new AreaCheckerBean();
-        Result result = new Result(-0.33, 0.66, 1, null);
+        Result result = new Result(-0.11, -0.11, 1, null);
         boolean checkResult = areaCheckerBean.check(result);
         assertTrue(checkResult);
     }

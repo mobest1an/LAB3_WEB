@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<project name="HelloWorld" default="compile">
+<project name="LAB3" default="compile">
 
     <property file="lab3_web.properties"/>
 
@@ -191,12 +191,21 @@
             <classpath refid="classpath"/>
         </javac>
 
-        <copy todir="${lab3_web.testoutput.dir}">
-            <fileset dir="${module.lab3_web.basedir}/src/test/java">
+        <copy todir="${testoutput.dir}">
+            <fileset dir="${basedir}/src/test/java">
                 <patternset refid="compiler.resources"/>
                 <type type="file"/>
             </fileset>
         </copy>
+
+        <junit>
+            <classpath>
+                <path refid="classpath"/>
+                <pathelement location="${testoutput.dir}"/>
+            </classpath>
+            <formatter type="brief" usefile="false"/>
+            <test name="SampleTest"/>
+        </junit>
     </target>
 
     <target name="music" depends="build">
