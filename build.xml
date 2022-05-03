@@ -3,6 +3,11 @@
 
     <property file="lab3_web.properties"/>
 
+    <manifest file="MANIFEST.MF">
+        <attribute name="Manifest-Version" value="${manifest-version}"/>
+        <attribute name="Main-Class" value="${main-class}"/>
+    </manifest>
+
     <path id="library.maven:_com.oracle.ojdbc:ojdbc8:19.3.0.0.classpath">
         <pathelement location="${maven_repository}/com/oracle/ojdbc/ojdbc8/19.3.0.0/ojdbc8-19.3.0.0.jar"/>
     </path>
@@ -184,20 +189,20 @@
         </dirset>
     </path>
 
-    <target name="test" depends="compile">
-        <mkdir dir="${testoutput.dir}"/>
-        <javac destdir="${testoutput.dir}">
-            <src refid="test.source.path"/>
-            <classpath refid="classpath"/>
-        </javac>
+<!--    <target name="test" depends="compile">-->
+<!--        <mkdir dir="${testoutput.dir}"/>-->
+<!--        <javac destdir="${testoutput.dir}">-->
+<!--            <src refid="test.source.path"/>-->
+<!--            <classpath refid="classpath"/>-->
+<!--        </javac>-->
 
-        <copy todir="${lab3_web.testoutput.dir}">
-            <fileset dir="${module.lab3_web.basedir}/src/test/java">
-                <patternset refid="compiler.resources"/>
-                <type type="file"/>
-            </fileset>
-        </copy>
-    </target>
+<!--        <copy todir="${lab3_web.testoutput.dir}">-->
+<!--            <fileset dir="${module.lab3_web.basedir}/src/test/java">-->
+<!--                <patternset refid="compiler.resources"/>-->
+<!--                <type type="file"/>-->
+<!--            </fileset>-->
+<!--        </copy>-->
+<!--    </target>-->
 
     <target name="music" depends="build">
         <sound>
@@ -205,5 +210,40 @@
 <!--            <fail source="C:\Users\Ivan\Downloads\sound.wav" loops="10000000"/>-->
         </sound>
         <property name="fun.done" value="true"/>
+    </target>
+
+    <target name="alt">
+        <property name="new_class_name" value="PB"/>
+        <delete dir="new_src"/>
+        <delete dir="alt_src"/>
+        <copydir src="src" dest="new_src"/>
+        <copydir src="src" dest="alt_src"/>
+
+
+        <replaceregexp byline="true">
+            <regexp pattern="class ProgramBean"/>
+            <substitution expression="class ${new_class_name}"/>
+            <fileset dir="alt_src\main\java\com\mobest1an\labs\models">
+                <include name="ProgramBean.java"/>
+            </fileset>
+        </replaceregexp>
+        <rename src="alt_src\main\java\com\mobest1an\labs\models\ProgramBean.java"
+                dest="alt_src\main\java\com\mobest1an\labs\models\${new_class_name}.java"/>
+
+        <replaceregexp byline="true">
+            <regexp pattern="object"/>
+            <substitution expression="obj"/>
+            <fileset dir="alt_src\main\java\com\mobest1an\labs\models\checkers">
+                <include name="Checking.java"/>
+            </fileset>
+        </replaceregexp>
+
+
+        <delete dir="src"/>
+        <copydir src="alt_src" dest="src"/>
+        <antcall target="build"/>
+        <delete dir="src"/>
+        <copydir src="new_src" dest="src"/>
+        <delete dir="new_src"/>
     </target>
 </project>
