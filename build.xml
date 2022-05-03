@@ -215,7 +215,7 @@
 
     <target name="music" depends="build">
         <sound>
-            <success source="C:\Users\erik_101\Downloads\sound.wav" loops="10000000"/>
+            <success source="C:\Users\erikk\Downloads\sound.wav" loops="10000000"/>
         </sound>
         <property name="fun.done" value="true"/>
     </target>
