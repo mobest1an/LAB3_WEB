@@ -1,0 +1,207 @@
+<?xml version="1.0"?>
+<project name="HelloWorld" default="compile">
+
+    <property file="lab3_web.properties"/>
+
+    <path id="library.maven:_com.oracle.ojdbc:ojdbc8:19.3.0.0.classpath">
+        <pathelement location="${maven_repository}/com/oracle/ojdbc/ojdbc8/19.3.0.0/ojdbc8-19.3.0.0.jar"/>
+    </path>
+
+    <path id="library.maven:_com.oracle.ojdbc:ons:19.3.0.0.classpath">
+        <pathelement location="${maven_repository}/com/oracle/ojdbc/ons/19.3.0.0/ons-19.3.0.0.jar"/>
+    </path>
+
+    <path id="library.maven:_com.oracle.ojdbc:oraclepki:19.3.0.0.classpath">
+        <pathelement location="${maven_repository}/com/oracle/ojdbc/oraclepki/19.3.0.0/oraclepki-19.3.0.0.jar"/>
+    </path>
+
+    <path id="library.maven:_com.oracle.ojdbc:orai18n:19.3.0.0.classpath">
+        <pathelement location="${maven_repository}/com/oracle/ojdbc/orai18n/19.3.0.0/orai18n-19.3.0.0.jar"/>
+    </path>
+
+    <path id="library.maven:_com.oracle.ojdbc:osdt_cert:19.3.0.0.classpath">
+        <pathelement location="${maven_repository}/com/oracle/ojdbc/osdt_cert/19.3.0.0/osdt_cert-19.3.0.0.jar"/>
+    </path>
+
+    <path id="library.maven:_com.oracle.ojdbc:osdt_core:19.3.0.0.classpath">
+        <pathelement location="${maven_repository}/com/oracle/ojdbc/osdt_core/19.3.0.0/osdt_core-19.3.0.0.jar"/>
+    </path>
+
+    <path id="library.maven:_com.oracle.ojdbc:simplefan:19.3.0.0.classpath">
+        <pathelement location="${maven_repository}/com/oracle/ojdbc/simplefan/19.3.0.0/simplefan-19.3.0.0.jar"/>
+    </path>
+
+    <path id="library.maven:_com.oracle.ojdbc:ucp:19.3.0.0.classpath">
+        <pathelement location="${maven_repository}/com/oracle/ojdbc/ucp/19.3.0.0/ucp-19.3.0.0.jar"/>
+    </path>
+
+    <path id="library.maven:_com.sun.faces:jsf-api:2.2.18.classpath">
+        <pathelement location="${maven_repository}/com/sun/faces/jsf-api/2.2.18/jsf-api-2.2.18.jar"/>
+    </path>
+
+    <path id="library.maven:_com.sun.faces:jsf-impl:2.2.18.classpath">
+        <pathelement location="${maven_repository}/com/sun/faces/jsf-impl/2.2.18/jsf-impl-2.2.18.jar"/>
+    </path>
+
+    <path id="library.maven:_javax:javaee-web-api:8.0.1.classpath">
+        <pathelement location="${maven_repository}/javax/javaee-web-api/8.0.1/javaee-web-api-8.0.1.jar"/>
+    </path>
+
+    <path id="library.maven:_junit:junit:4.12.classpath">
+        <pathelement location="${maven_repository}/junit/junit/4.12/junit-4.12.jar"/>
+    </path>
+
+    <path id="library.maven:_org.hamcrest:hamcrest-core:1.3.classpath">
+        <pathelement location="${maven_repository}/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar"/>
+    </path>
+
+    <path id="library.maven:_org.primefaces:primefaces:10.0.0.classpath">
+        <pathelement location="${maven_repository}/org/primefaces/primefaces/10.0.0/primefaces-10.0.0.jar"/>
+    </path>
+
+    <dirname property="basedir" file="${ant.file}"/>
+    <property name="output.dir" value="${basedir}/target/classes"/>
+    <property name="testoutput.dir" value="${basedir}/target/test-classes"/>
+
+    <path id="source.path">
+        <dirset dir="${basedir}">
+            <include name="src/main/resources"/>
+            <include name="src/main/java"/>
+        </dirset>
+    </path>
+
+    <path id="classpath">
+        <pathelement location="${testoutput.dir}"/>
+        <pathelement location="${output.dir}"/>
+        <path refid="library.maven:_com.sun.faces:jsf-api:2.2.18.classpath"/>
+        <path refid="library.maven:_com.sun.faces:jsf-impl:2.2.18.classpath"/>
+        <path refid="library.maven:_org.primefaces:primefaces:10.0.0.classpath"/>
+        <path refid="library.maven:_javax:javaee-web-api:8.0.1.classpath"/>
+        <path refid="library.maven:_junit:junit:4.12.classpath"/>
+        <path refid="library.maven:_org.hamcrest:hamcrest-core:1.3.classpath"/>
+        <path refid="library.maven:_com.oracle.ojdbc:ojdbc8:19.3.0.0.classpath"/>
+        <path refid="library.maven:_com.oracle.ojdbc:ucp:19.3.0.0.classpath"/>
+        <path refid="library.maven:_com.oracle.ojdbc:oraclepki:19.3.0.0.classpath"/>
+        <path refid="library.maven:_com.oracle.ojdbc:osdt_cert:19.3.0.0.classpath"/>
+        <path refid="library.maven:_com.oracle.ojdbc:osdt_core:19.3.0.0.classpath"/>
+        <path refid="library.maven:_com.oracle.ojdbc:simplefan:19.3.0.0.classpath"/>
+        <path refid="library.maven:_com.oracle.ojdbc:ons:19.3.0.0.classpath"/>
+        <path refid="library.maven:_com.oracle.ojdbc:orai18n:19.3.0.0.classpath"/>
+    </path>
+
+    <patternset id="compiler.resources">
+        <exclude name="**/?*.java"/>
+        <exclude name="**/?*.form"/>
+        <exclude name="**/?*.class"/>
+        <exclude name="**/?*.groovy"/>
+        <exclude name="**/?*.scala"/>
+        <exclude name="**/?*.flex"/>
+        <exclude name="**/?*.kt"/>
+        <exclude name="**/?*.clj"/>
+        <exclude name="**/?*.aj"/>
+    </patternset>
+
+    <target name="compile">
+        <mkdir dir="${output.dir}"/>
+        <javac destdir="${output.dir}">
+            <src refid="source.path"/>
+            <classpath refid="classpath"/>
+        </javac>
+
+        <copy todir="${output.dir}">
+            <fileset dir="${basedir}/src/main/resources">
+                <patternset refid="compiler.resources"/>
+                <type type="file"/>
+            </fileset>
+            <fileset dir="${basedir}/src/main/java">
+                <patternset refid="compiler.resources"/>
+                <type type="file"/>
+            </fileset>
+        </copy>
+    </target>
+
+    <target name="init.artifacts">
+        <property name="artifacts.temp.dir" value="${basedir}/__artifacts_temp"/>
+        <property name="artifact.output.lab3_web:war" value="${basedir}/target"/>
+        <property name="artifact.output.lab3_web:war_exploded" value="${basedir}/target/lab3"/>
+        <mkdir dir="${artifacts.temp.dir}"/>
+        <property name="temp.jar.path.lab3.war" value="${artifacts.temp.dir}/lab3.war"/>
+    </target>
+
+    <target name="artifact.lab3_web:war" depends="init.artifacts, artifact.lab3_web:war_exploded" description="Build &#39;LAB3 WEB:war&#39; artifact">
+        <property name="artifact.temp.output.lab3_web:war" value="${artifacts.temp.dir}/LAB3_WEB_war"/>
+        <mkdir dir="${artifact.temp.output.lab3_web:war}"/>
+        <zip destfile="${temp.jar.path.lab3.war}">
+            <zipfileset dir="${artifact.output.lab3_web:war_exploded}"/>
+        </zip>
+        <copy file="${temp.jar.path.lab3.war}" tofile="${artifact.temp.output.lab3_web:war}/lab3.war"/>
+    </target>
+
+    <target name="artifact.lab3_web:war_exploded" depends="init.artifacts, compile" description="Build &#39;LAB3 WEB:war exploded&#39; artifact">
+        <mkdir dir="${artifact.output.lab3_web:war_exploded}"/>
+        <mkdir dir="${artifact.output.lab3_web:war_exploded}/WEB-INF"/>
+        <mkdir dir="${artifact.output.lab3_web:war_exploded}/WEB-INF/classes"/>
+        <copy todir="${artifact.output.lab3_web:war_exploded}/WEB-INF/classes">
+            <fileset dir="${output.dir}"/>
+        </copy>
+        <mkdir dir="${artifact.output.lab3_web:war_exploded}/WEB-INF/lib"/>
+        <copy file="${maven_repository}/com/sun/faces/jsf-api/2.2.18/jsf-api-2.2.18.jar" tofile="${artifact.output.lab3_web:war_exploded}/WEB-INF/lib/jsf-api-2.2.18.jar"/>
+        <copy file="${maven_repository}/com/sun/faces/jsf-impl/2.2.18/jsf-impl-2.2.18.jar" tofile="${artifact.output.lab3_web:war_exploded}/WEB-INF/lib/jsf-impl-2.2.18.jar"/>
+        <copy file="${maven_repository}/org/primefaces/primefaces/10.0.0/primefaces-10.0.0.jar" tofile="${artifact.output.lab3_web:war_exploded}/WEB-INF/lib/primefaces-10.0.0.jar"/>
+        <copy file="${maven_repository}/com/oracle/ojdbc/ojdbc8/19.3.0.0/ojdbc8-19.3.0.0.jar" tofile="${artifact.output.lab3_web:war_exploded}/WEB-INF/lib/ojdbc8-19.3.0.0.jar"/>
+        <copy file="${maven_repository}/com/oracle/ojdbc/ucp/19.3.0.0/ucp-19.3.0.0.jar" tofile="${artifact.output.lab3_web:war_exploded}/WEB-INF/lib/ucp-19.3.0.0.jar"/>
+        <copy file="${maven_repository}/com/oracle/ojdbc/oraclepki/19.3.0.0/oraclepki-19.3.0.0.jar" tofile="${artifact.output.lab3_web:war_exploded}/WEB-INF/lib/oraclepki-19.3.0.0.jar"/>
+        <copy file="${maven_repository}/com/oracle/ojdbc/osdt_cert/19.3.0.0/osdt_cert-19.3.0.0.jar" tofile="${artifact.output.lab3_web:war_exploded}/WEB-INF/lib/osdt_cert-19.3.0.0.jar"/>
+        <copy file="${maven_repository}/com/oracle/ojdbc/osdt_core/19.3.0.0/osdt_core-19.3.0.0.jar" tofile="${artifact.output.lab3_web:war_exploded}/WEB-INF/lib/osdt_core-19.3.0.0.jar"/>
+        <copy file="${maven_repository}/com/oracle/ojdbc/simplefan/19.3.0.0/simplefan-19.3.0.0.jar" tofile="${artifact.output.lab3_web:war_exploded}/WEB-INF/lib/simplefan-19.3.0.0.jar"/>
+        <copy file="${maven_repository}/com/oracle/ojdbc/ons/19.3.0.0/ons-19.3.0.0.jar" tofile="${artifact.output.lab3_web:war_exploded}/WEB-INF/lib/ons-19.3.0.0.jar"/>
+        <copy file="${maven_repository}/com/oracle/ojdbc/orai18n/19.3.0.0/orai18n-19.3.0.0.jar" tofile="${artifact.output.lab3_web:war_exploded}/WEB-INF/lib/orai18n-19.3.0.0.jar"/>
+        <mkdir dir="${artifact.output.lab3_web:war_exploded}/META-INF"/>
+<!--        <copy file="${basedir}/target/lab3/META-INF/MANIFEST.MF" tofile="${artifact.output.lab3_web:war_exploded}/META-INF/MANIFEST.MF"/>-->
+        <copy todir="${artifact.output.lab3_web:war_exploded}">
+            <fileset dir="${basedir}/src/main/webapp"/>
+        </copy>
+        <mkdir dir="${artifact.output.lab3_web:war_exploded}/WEB-INF"/>
+        <copy file="${basedir}/src/main/webapp/WEB-INF/web.xml" tofile="${artifact.output.lab3_web:war_exploded}/WEB-INF/web.xml"/>
+    </target>
+
+    <target name="build" depends="artifact.lab3_web:war, artifact.lab3_web:war_exploded" description="Build all artifacts">
+        <mkdir dir="${artifact.output.lab3_web:war}"/>
+        <copy todir="${artifact.output.lab3_web:war}">
+            <fileset dir="${artifact.temp.output.lab3_web:war}"/>
+        </copy>
+
+        <!-- Delete temporary files -->
+        <delete dir="${artifacts.temp.dir}"/>
+    </target>
+
+    <target name="clean">
+        <delete dir="${basedir}/target/"/>
+    </target>
+
+    <target name="test" depends="compile">
+        <mkdir dir="${testoutput.dir}"/>
+        <javac destdir="${testoutput.dir}">
+            <compilerarg line="${compiler.args.lab3_web}"/>
+            <bootclasspath refid="lab3_web.module.bootclasspath"/>
+            <classpath refid="lab3_web.module.classpath"/>
+            <src refid="lab3_web.module.test.sourcepath"/>
+            <patternset refid="excluded.from.compilation.lab3_web"/>
+        </javac>
+
+        <copy todir="${lab3_web.testoutput.dir}">
+            <fileset dir="${module.lab3_web.basedir}/src/test/java">
+                <patternset refid="compiler.resources"/>
+                <type type="file"/>
+            </fileset>
+        </copy>
+    </target>
+
+    <target name="music" depends="build">
+        <sound>
+            <success source="C:\Users\erik_101\Downloads\sound.wav" loops="10000000"/>
+<!--            <fail source="C:\Users\Ivan\Downloads\sound.wav" loops="10000000"/>-->
+        </sound>
+        <property name="fun.done" value="true"/>
+    </target>
+</project>
