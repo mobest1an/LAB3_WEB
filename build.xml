@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <project name="LAB3" default="compile">
 
-    <property file="lab3_web.properties"/>
+    <property file="build.properties"/>
 
     <manifest file="MANIFEST.MF">
         <attribute name="Manifest-Version" value="${manifest-version}"/>
