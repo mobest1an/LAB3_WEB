@@ -132,52 +132,52 @@
 
     <target name="build.init">
         <property name="artifacts.temp.dir" value="${basedir}/__artifacts_temp"/>
-        <property name="artifact.output.lab3_web:war" value="${basedir}/target"/>
-        <property name="artifact.output.lab3_web:war_exploded" value="${basedir}/target/lab3"/>
+        <property name="artifact.war" value="${basedir}/target"/>
+        <property name="artifact.war_exploded" value="${basedir}/target/lab3"/>
         <mkdir dir="${artifacts.temp.dir}"/>
-        <property name="temp.jar.path.lab3.war" value="${artifacts.temp.dir}/lab3.war"/>
-    </target>
-
-    <target name="build.war" depends="build.init, build.war.exploded">
-        <property name="artifact.temp.output.lab3_web:war" value="${artifacts.temp.dir}/LAB3_WEB_war"/>
-        <mkdir dir="${artifact.temp.output.lab3_web:war}"/>
-        <zip destfile="${temp.jar.path.lab3.war}">
-            <zipfileset dir="${artifact.output.lab3_web:war_exploded}"/>
-        </zip>
-        <copy file="${temp.jar.path.lab3.war}" tofile="${artifact.temp.output.lab3_web:war}/lab3.war"/>
+        <property name="temp.war" value="${artifacts.temp.dir}/lab3.war"/>
     </target>
 
     <target name="build.war.exploded" depends="build.init, compile">
-        <mkdir dir="${artifact.output.lab3_web:war_exploded}"/>
-        <mkdir dir="${artifact.output.lab3_web:war_exploded}/WEB-INF"/>
-        <mkdir dir="${artifact.output.lab3_web:war_exploded}/WEB-INF/classes"/>
-        <copy todir="${artifact.output.lab3_web:war_exploded}/WEB-INF/classes">
+        <mkdir dir="${artifact.war_exploded}"/>
+        <mkdir dir="${artifact.war_exploded}/WEB-INF"/>
+        <mkdir dir="${artifact.war_exploded}/WEB-INF/classes"/>
+        <copy todir="${artifact.war_exploded}/WEB-INF/classes">
             <fileset dir="${output.dir}"/>
         </copy>
-        <mkdir dir="${artifact.output.lab3_web:war_exploded}/WEB-INF/lib"/>
-        <copy file="${maven_repository}/com/sun/faces/jsf-api/2.2.18/jsf-api-2.2.18.jar" tofile="${artifact.output.lab3_web:war_exploded}/WEB-INF/lib/jsf-api-2.2.18.jar"/>
-        <copy file="${maven_repository}/com/sun/faces/jsf-impl/2.2.18/jsf-impl-2.2.18.jar" tofile="${artifact.output.lab3_web:war_exploded}/WEB-INF/lib/jsf-impl-2.2.18.jar"/>
-        <copy file="${maven_repository}/org/primefaces/primefaces/10.0.0/primefaces-10.0.0.jar" tofile="${artifact.output.lab3_web:war_exploded}/WEB-INF/lib/primefaces-10.0.0.jar"/>
-        <copy file="${maven_repository}/com/oracle/ojdbc/ojdbc8/19.3.0.0/ojdbc8-19.3.0.0.jar" tofile="${artifact.output.lab3_web:war_exploded}/WEB-INF/lib/ojdbc8-19.3.0.0.jar"/>
-        <copy file="${maven_repository}/com/oracle/ojdbc/ucp/19.3.0.0/ucp-19.3.0.0.jar" tofile="${artifact.output.lab3_web:war_exploded}/WEB-INF/lib/ucp-19.3.0.0.jar"/>
-        <copy file="${maven_repository}/com/oracle/ojdbc/oraclepki/19.3.0.0/oraclepki-19.3.0.0.jar" tofile="${artifact.output.lab3_web:war_exploded}/WEB-INF/lib/oraclepki-19.3.0.0.jar"/>
-        <copy file="${maven_repository}/com/oracle/ojdbc/osdt_cert/19.3.0.0/osdt_cert-19.3.0.0.jar" tofile="${artifact.output.lab3_web:war_exploded}/WEB-INF/lib/osdt_cert-19.3.0.0.jar"/>
-        <copy file="${maven_repository}/com/oracle/ojdbc/osdt_core/19.3.0.0/osdt_core-19.3.0.0.jar" tofile="${artifact.output.lab3_web:war_exploded}/WEB-INF/lib/osdt_core-19.3.0.0.jar"/>
-        <copy file="${maven_repository}/com/oracle/ojdbc/simplefan/19.3.0.0/simplefan-19.3.0.0.jar" tofile="${artifact.output.lab3_web:war_exploded}/WEB-INF/lib/simplefan-19.3.0.0.jar"/>
-        <copy file="${maven_repository}/com/oracle/ojdbc/ons/19.3.0.0/ons-19.3.0.0.jar" tofile="${artifact.output.lab3_web:war_exploded}/WEB-INF/lib/ons-19.3.0.0.jar"/>
-        <copy file="${maven_repository}/com/oracle/ojdbc/orai18n/19.3.0.0/orai18n-19.3.0.0.jar" tofile="${artifact.output.lab3_web:war_exploded}/WEB-INF/lib/orai18n-19.3.0.0.jar"/>
-        <mkdir dir="${artifact.output.lab3_web:war_exploded}/META-INF"/>
-        <copy todir="${artifact.output.lab3_web:war_exploded}">
+        <mkdir dir="${artifact.war_exploded}/WEB-INF/lib"/>
+        <copy file="${maven_repository}/com/sun/faces/jsf-api/2.2.18/jsf-api-2.2.18.jar" tofile="${artifact.war_exploded}/WEB-INF/lib/jsf-api-2.2.18.jar"/>
+        <copy file="${maven_repository}/com/sun/faces/jsf-impl/2.2.18/jsf-impl-2.2.18.jar" tofile="${artifact.war_exploded}/WEB-INF/lib/jsf-impl-2.2.18.jar"/>
+        <copy file="${maven_repository}/org/primefaces/primefaces/10.0.0/primefaces-10.0.0.jar" tofile="${artifact.war_exploded}/WEB-INF/lib/primefaces-10.0.0.jar"/>
+        <copy file="${maven_repository}/com/oracle/ojdbc/ojdbc8/19.3.0.0/ojdbc8-19.3.0.0.jar" tofile="${artifact.war_exploded}/WEB-INF/lib/ojdbc8-19.3.0.0.jar"/>
+        <copy file="${maven_repository}/com/oracle/ojdbc/ucp/19.3.0.0/ucp-19.3.0.0.jar" tofile="${artifact.war_exploded}/WEB-INF/lib/ucp-19.3.0.0.jar"/>
+        <copy file="${maven_repository}/com/oracle/ojdbc/oraclepki/19.3.0.0/oraclepki-19.3.0.0.jar" tofile="${artifact.war_exploded}/WEB-INF/lib/oraclepki-19.3.0.0.jar"/>
+        <copy file="${maven_repository}/com/oracle/ojdbc/osdt_cert/19.3.0.0/osdt_cert-19.3.0.0.jar" tofile="${artifact.war_exploded}/WEB-INF/lib/osdt_cert-19.3.0.0.jar"/>
+        <copy file="${maven_repository}/com/oracle/ojdbc/osdt_core/19.3.0.0/osdt_core-19.3.0.0.jar" tofile="${artifact.war_exploded}/WEB-INF/lib/osdt_core-19.3.0.0.jar"/>
+        <copy file="${maven_repository}/com/oracle/ojdbc/simplefan/19.3.0.0/simplefan-19.3.0.0.jar" tofile="${artifact.war_exploded}/WEB-INF/lib/simplefan-19.3.0.0.jar"/>
+        <copy file="${maven_repository}/com/oracle/ojdbc/ons/19.3.0.0/ons-19.3.0.0.jar" tofile="${artifact.war_exploded}/WEB-INF/lib/ons-19.3.0.0.jar"/>
+        <copy file="${maven_repository}/com/oracle/ojdbc/orai18n/19.3.0.0/orai18n-19.3.0.0.jar" tofile="${artifact.war_exploded}/WEB-INF/lib/orai18n-19.3.0.0.jar"/>
+        <mkdir dir="${artifact.war_exploded}/META-INF"/>
+        <copy todir="${artifact.war_exploded}">
             <fileset dir="${basedir}/src/main/webapp"/>
         </copy>
-        <mkdir dir="${artifact.output.lab3_web:war_exploded}/WEB-INF"/>
-        <copy file="${basedir}/src/main/webapp/WEB-INF/web.xml" tofile="${artifact.output.lab3_web:war_exploded}/WEB-INF/web.xml"/>
+        <mkdir dir="${artifact.war_exploded}/WEB-INF"/>
+        <copy file="${basedir}/src/main/webapp/WEB-INF/web.xml" tofile="${artifact.war_exploded}/WEB-INF/web.xml"/>
+    </target>
+
+    <target name="build.war" depends="build.init, build.war.exploded">
+        <property name="artifact.temp.war" value="${artifacts.temp.dir}/LAB3_WEB_war"/>
+        <mkdir dir="${artifact.temp.war}"/>
+        <zip destfile="${temp.war}">
+            <zipfileset dir="${artifact.war_exploded}"/>
+        </zip>
+        <copy file="${temp.war}" tofile="${artifact.temp.war}/lab3.war"/>
     </target>
 
     <target name="build" depends="build.war, build.war.exploded">
-        <mkdir dir="${artifact.output.lab3_web:war}"/>
-        <copy todir="${artifact.output.lab3_web:war}">
-            <fileset dir="${artifact.temp.output.lab3_web:war}"/>
+        <mkdir dir="${artifact.war}"/>
+        <copy todir="${artifact.war}">
+            <fileset dir="${artifact.temp.war}"/>
         </copy>
 
         <delete dir="${artifacts.temp.dir}"/>
