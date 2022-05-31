@@ -29,13 +29,18 @@ public class ProgramBean {
     void init() {
         try {
             MBeanServer mBeanServer = ManagementFactory.getPlatformMBeanServer();
+
             ObjectName userStatisticProviderName = new ObjectName("com.mobest1an.labs.MBeans:type=UserStatisticProvider");
             ObjectName severalIntervalProviderName = new ObjectName("com.mobest1an.labs.MBeans:type=SeveralIntervalProvider");
+
             userStatisticProvider = new UserStatisticProvider();
             severalIntervalProvider = new SeveralIntervalProvider();
+
             mBeanServer.registerMBean(userStatisticProvider, userStatisticProviderName);
             mBeanServer.registerMBean(severalIntervalProvider, severalIntervalProviderName);
+
             userStatisticProvider.setResults(results);
+            userStatisticProvider.calculateUserDoubleMissed();
             severalIntervalProvider.setResults(results);
         } catch (Exception e) {
             e.printStackTrace();
@@ -135,6 +140,8 @@ public class ProgramBean {
         } else {
             message = "Не удалось добавить элемент!";
         }
+
+        userStatisticProvider.calculateUserDoubleMissed();
     }
 
     public void doClear() {
