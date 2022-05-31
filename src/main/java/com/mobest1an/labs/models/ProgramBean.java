@@ -1,20 +1,46 @@
 package com.mobest1an.labs.models;
 
+import com.mobest1an.labs.MBeans.SeveralIntervalProvider;
+import com.mobest1an.labs.MBeans.UserStatisticProvider;
 import com.mobest1an.labs.models.checkers.Checking;
 import com.mobest1an.labs.services.Result;
 import com.mobest1an.labs.services.ResultService;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.management.MBeanServer;
+import javax.management.ObjectName;
 import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.DecimalMin;
+import java.lang.management.ManagementFactory;
 import java.util.Date;
 import java.util.List;
 
 @ManagedBean(name = "programBean", eager = true)
 @ApplicationScoped
 public class ProgramBean {
+
+    private UserStatisticProvider userStatisticProvider;
+    private SeveralIntervalProvider severalIntervalProvider;
+
+    @PostConstruct
+    void init() {
+        try {
+            MBeanServer mBeanServer = ManagementFactory.getPlatformMBeanServer();
+            ObjectName userStatisticProviderName = new ObjectName("com.mobest1an.labs.MBeans:type=UserStatisticProvider");
+            ObjectName severalIntervalProviderName = new ObjectName("com.mobest1an.labs.MBeans:type=SeveralIntervalProvider");
+            userStatisticProvider = new UserStatisticProvider();
+            severalIntervalProvider = new SeveralIntervalProvider();
+            mBeanServer.registerMBean(userStatisticProvider, userStatisticProviderName);
+            mBeanServer.registerMBean(severalIntervalProvider, severalIntervalProviderName);
+            userStatisticProvider.setResults(results);
+            severalIntervalProvider.setResults(results);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     @ManagedProperty(value = "#{areaCheckerBean}")
     private Checking checking;
@@ -44,6 +70,7 @@ public class ProgramBean {
     public double getX() {
         return x;
     }
+
     public void setX(double x) {
         this.x = x;
     }
@@ -51,6 +78,7 @@ public class ProgramBean {
     public double getY() {
         return y;
     }
+
     public void setY(double y) {
         this.y = y;
     }
@@ -58,6 +86,7 @@ public class ProgramBean {
     public double getR() {
         return r;
     }
+
     public void setR(double r) {
         this.r = r;
     }
@@ -65,6 +94,7 @@ public class ProgramBean {
     public Checking getChecking() {
         return checking;
     }
+
     public void setChecking(Checking checking) {
         this.checking = checking;
     }
@@ -72,6 +102,7 @@ public class ProgramBean {
     public ResultService getResultService() {
         return resultService;
     }
+
     public void setResultService(ResultService resultService) {
         this.resultService = resultService;
     }
