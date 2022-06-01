@@ -66,9 +66,4 @@ public class UserStatisticProvider extends NotificationBroadcasterSupport implem
         calculateUserPointsCount();
         return userPointsCount;
     }
-
-    @Override
-    public void setUserPointsCount(int pointsCount) {
-        this.userPointsCount = pointsCount;
-    }
 }

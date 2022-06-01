@@ -42,9 +42,4 @@ public class SeveralIntervalProvider implements SeveralIntervalProviderMBean {
         calculateSeveralInterval();
         return severalInterval;
     }
-
-    @Override
-    public void setSeveralInterval(double severalInterval) {
-        this.severalInterval = severalInterval;
-    }
 }
